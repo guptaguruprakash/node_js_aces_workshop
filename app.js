@@ -1,6 +1,7 @@
 const express =require("express")
 const connectToDb =require("./database/databaseConnection")
 const Blog = require("./model/blogModel")
+const Form=require("./model/formmodel")
 const app =express()
 connectToDb()
 app.use(express.json())
@@ -48,4 +49,23 @@ app.post("/createblog",async (req,res)=>{
     })
     
     res.send("post hitted")
+})
+app.post("/submitform",async (req,res)=>{
+    //console.log(req.body)
+    //const title =req.body.tile
+    //const subtitle=req.body.subtitle
+    //const decription=req.body.description
+    //const subtitle=req.body.subtitle
+    //const image=req.body.image
+    const {name,email,message}=req.body
+    console.log(name,email,message)
+
+    await Form.create({
+        name,
+        email,
+        message
+    }
+    );
+
+    res.send("post hitted");
 })
