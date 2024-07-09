@@ -2,6 +2,8 @@ const express =require("express")
 const connectToDb =require("./database/databaseConnection")
 const Blog = require("./model/blogModel")
 const Form=require("./model/formmodel")
+const {multer,storage}=require("./middleware/multerConfig.js");
+const upload=multer({storage : storage})
 const app =express()
 connectToDb()
 app.use(express.json())
@@ -33,19 +35,22 @@ app.get("/contact",(req,res)=>{
     res.render("contact.ejs",{data})
     
 })
-app.post("/createblog",async (req,res)=>{
+app.post("/createblog",upload.single('image') ,async (req,res)=>{
     //console.log(req.body)
     //const title =req.body.tile
     //const subtitle=req.body.subtitle
     //const decription=req.body.description
     //const subtitle=req.body.subtitle
     //const image=req.body.image
+    const file = req.file
+    console.log(file)
     const {title,subtitle,description}=req.body
     console.log(title,subtitle,description)
     await Blog.create({
         title,
         subtitle,
-        description
+        description,
+        image :file.filename
     })
     
     res.send("post hitted")
