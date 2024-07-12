@@ -4,7 +4,7 @@ const blogSchema = new Schema({
     title : {
         type : String
     },
-    subtile : {
+    subtitle : {
         type : String
     },
     description :

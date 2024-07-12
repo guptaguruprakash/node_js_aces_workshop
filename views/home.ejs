@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Homepage</title>
+    <style>
+        /* General Reset and Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: red;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #140cb9;
+        }
+
+        .active {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* Navigation Toggle Styles */
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-toggle-label {
+            cursor: pointer;
+            display: block;
+            padding: 10px;
+            user-select: none;
+        }
+
+        .nav-toggle-label span {
+            background-color: #fff;
+            display: block;
+            height: 2px;
+            position: relative;
+            transition: background 0.3s ease;
+            width: 18px;
+        }
+
+        .nav-toggle:checked + .nav-toggle-label span {
+            background-color: transparent;
+        }
+
+        /* Blog Post Cards */
+        .blog-posts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding-top: 80px;
+        }
+
+        .card {
+            background-color: #fff;
+            margin-bottom: 20px;
+            width: calc(33.333% - 40px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            margin: 0;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #f57c00;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: red;
+                padding: 10px 0;
+                z-index: 999;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-toggle {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                z-index: 1000;
+            }
+
+            body.nav-open .nav-links {
+                display: flex;
+            }
+            
+            body.nav-open .nav-toggle-label span {
+                background-color: transparent;
+            }
+
+            .card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('component/navbar') %>
+    <main>
+        <div class="container">
+            <section class="blog-posts">
+                <!-- Example Blog Post Cards -->
+                <% blogs.forEach(blog => { %>
+                <article class="card">
+                    <img src="<%- blog.image %>" alt="Blog Image">
+                    <div class="card-content">
+                        <h2 class="card-title"><%- blog.title %></h2>
+                        <p class="card-description"><%-blog.subtitle %></p>
+                        <a href="/myblog/<%-blog._id%>">see more</a>
+                    </div>
+                </article>
+                <% }); %>
+                <!-- End Example Blog Post Cards -->
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Optional: JavaScript for navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        navToggle.addEventListener('click', () => {
+            document.body.classList.toggle('nav-open');
+        });
+    </script>
+</body>
+</html>
