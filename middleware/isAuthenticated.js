@@ -6,7 +6,7 @@ const User = require("../model/usermodel"); // Corrected reference
 const isAuthenticated = async (req, res, next) => {
     const token = req.cookies.token;
     console.log(token);
-    if (!token || token === null) {
+    if (!token || token == null) {
         return res.send("please login");
     }
     jwt.verify(token, process.env.SECRET, async (err, result) => {
@@ -16,9 +16,10 @@ const isAuthenticated = async (req, res, next) => {
             const data = await User.findById(result.userId); // Corrected typo
             if (!data) {
                 return res.send("User not found");
-            }
+            }else{
             req.userId = result.userId;
             next();
+            }
         }
     });
 };
