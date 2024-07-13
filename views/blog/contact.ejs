@@ -2,19 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <%- include("../components/linkbootstrap.ejs") %> 
 </head>
 <body>
-    <h1><%- data %></h1>
-    <form action="/submitform" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Send</button>
-    </form>
+  
+    <%- include("../components/navbar.ejs") %>
+    <main>
+        <div class="container">
+            <h1><%- data %></h1>
+            <form action="/submitform" method="POST">
+                <br>
+                <br>
+        
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+                <button type="submit" class="btn btn-warning btn-sm">Send</button>
+            </form>
+        </div>
+    </main>
+
+    <%- include("../components/footer.ejs") %>
+
+    <script>
+        // Optional: JavaScript for navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        navToggle.addEventListener('click', () => {
+            document.body.classList.toggle('nav-open');
+        });
+    </script>
+    <%- include("../components/scriptbootstrap.ejs") %> 
 </body>
 </html>

@@ -1,0 +1,25 @@
+<html><title>Content</title>
+<link rel="stylesheet" href="/css/home.css">
+<%- include("../components/linkbootstrap.ejs") %> <body>
+<main>
+    <%- include("../components/navbar.ejs") %> 
+    <div class="container">
+        <section class="blog-posts">
+            <% blogs.forEach(blog => { %>
+            <article class="card">
+                <img src="<%- blog.image %>" alt="Blog Image">
+                <div class="card-content">
+                    <h2 class="card-title"><%- blog.title %></h2>
+                    <p class="card-description"><%- blog.subtitle %></p>
+                    <p class="card-date">Published on: <%- new Date(blog.date).toLocaleDateString() %></p>
+                    <a href="/blog/<%- blog._id %>">See more</a>
+                </div>
+            </article>
+            <% }); %>
+        </section>
+    </div>
+</main>
+<%- include("../components/footer.ejs") %>
+<%- include("../components/scriptbootstrap.ejs") %> 
+</body>
+</html>

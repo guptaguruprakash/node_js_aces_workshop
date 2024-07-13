@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%- data.title %></title>
+    <link rel="stylesheet" href="/css/home.css">
+    <%- include("../components/linkbootstrap.ejs") %> 
 </head>
 <body>
-    <h1><%- data.title %></h1>
-    <img src="/<%- data.image %>" alt="<%- data.title %>">
-    <h2><%- data.subtitle %></h2>
-    <p><%- data.description %></p>
-    <button><a href="/editdata/<%- data._id %>">Edit</a></button>
-    <button><a href="/deletedata/<%- data._id %>">Delete me</a></button> 
+    <%- include("../components/navbar.ejs") %> <br>
+    <div class="container-fluid d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn btn-warning btn-sm btn-end"><a href="/editdata/<%- data._id %>">Edit</a></button>
+        <button class="btn btn btn-warning btn-sm"><a href="/deletedata/<%- data._id %>">Delete me</a></button></div
+    <p class="text-danger  fs-1"><%- data.title %></p>
+    <img src="/<%- data.image %>"class="img-fluid" width="500px" height="500px"  alt="<%- data.title %>">
+    <p class="text-primary t fs-2"><%- data.subtitle %></p>
+    <p class="text-success"><%- data.description %></p>
+    <%- include("../components/footer.ejs") %>
+    <%- include("../components/scriptbootstrap.ejs") %> 
+
+
 </body>
 </html>

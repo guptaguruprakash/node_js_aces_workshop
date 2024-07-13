@@ -1,0 +1,314 @@
+    /* General Reset and Styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+        background-color: red;
+        color: #fff;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-right: 20px;
+    }
+
+    .nav-links li a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+        color: #140cb9;
+    }
+
+    .active {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    /* Navigation Toggle Styles */
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-toggle-label {
+        cursor: pointer;
+        display: block;
+        padding: 10px;
+        user-select: none;
+    }
+
+    .nav-toggle-label span {
+        background-color: #fff;
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background 0.3s ease;
+        width: 18px;
+    }
+
+    .nav-toggle:checked + .nav-toggle-label span {
+        background-color: transparent;
+    }
+
+    /* Blog Post Cards */
+    .blog-posts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 80px;
+    }
+
+    .card {
+        background-color: #fff;
+        margin-bottom: 20px;
+        width: calc(33.333% - 40px);
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card-title {
+        margin: 0;
+        color: #333;
+        font-size: 1.2rem;
+    }
+
+    .card-description {
+        color: #666;
+        font-size: 14px;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ff9800;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #f57c00;
+    }
+
+    /* Footer Styles */
+/* Footer Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+ 
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0; /* Adjusted padding */
+    position: relative; /* Changed from absolute to relative */
+    bottom: 0;
+    width: 100%;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+footer .social-icons a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+    @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+        }
+        
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: red;
+            padding: 10px 0;
+            z-index: 999;
+            text-align: center;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 10px 0;
+        }
+
+        .nav-toggle {
+            display: block;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+        }
+
+        body.nav-open .nav-links {
+            display: flex;
+        }
+        
+        body.nav-open .nav-toggle-label span {
+            background-color: transparent;
+        }
+
+        .card {
+            width: calc(50% - 20px);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card {
+            width: calc(100% - 20px);
+        }
+        /* Global Reset and Basic Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+.form-container {
+    margin-top: 50px; /* Move the form 50px down from the top */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+form {
+    margin-top: 2000px; 
+    background: #f9f9f9;
+    padding: 20222px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    min-height: 100px; /* Minimum height of textarea */
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+h1 {
+    margin-top: 50px; /* Adjust the value as needed */
+    text-align: center; /* This centers the text */
+  }
+  #blog-title {
+    margin-top: 50px; /* Adjust the value as needed */
+    text-align: center;
+  }
+
+    }
+
