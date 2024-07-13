@@ -1,24 +1,29 @@
 const jwt = require("jsonwebtoken");
-const { promisify } = require('util');
-const User = require("../model/usermodel");
+const { findById } = require("../model/blogModel");
+const User = require("../model/userModel");
+const promisify = require("util").promisify;
 
-const isAuthenticated = async (req, res, next) => {
-    const token = req.cookies.token;
-    if (!token) {
-        return res.status(401).send("Please login");
-    }
-
-    try {
-        const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-        const user = await User.findById(decoded.id);
-        if (!user) {
-            return res.status(404).send("User not found");
-        }
-        req.userId = decoded.id;
-        next();
-    } catch (err) {
-        return res.status(401).send("Invalid token");
-    }
+const isAuthenticated = (req, res, next) => {
+  token = req.cookies.token;
+  
+  if (!token || token == null) {
+    return res.send("Please login");
+  }
+//   jwt.verify(promisify((token, process.env.SECRET)));
+  jwt.verify(token, process.env.SECRET, async (err, result)=>{
+      if(err){
+          res.send("Invalid token")
+      } else {
+          console.log("Valid token", result)
+          const data = await User.findById(result.userId);
+            if(!data){
+                res.send("Invalid User ID in the token")
+            } else {
+                req.userId = result.userId
+                next()
+            }
+      }
+  })
 };
 
 module.exports = isAuthenticated;

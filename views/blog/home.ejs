@@ -218,7 +218,7 @@
     </style>
 </head>
 <body>
-    <%- include('component/navbar') %>
+    <%- include("../components/navbar.ejs") %>
     <main>
         <div class="container">
             <section class="blog-posts">
@@ -229,7 +229,7 @@
                     <div class="card-content">
                         <h2 class="card-title"><%- blog.title %></h2>
                         <p class="card-description"><%-blog.subtitle %></p>
-                        <a href="/myblog/<%-blog._id%>">see more</a>
+                        <a href="/blog/<%-blog._id%>">see more</a>
                     </div>
                 </article>
                 <% }); %>

@@ -3,78 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>User Registration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
         }
-        .login-container {
+
+        .container {
             max-width: 400px;
             background-color: #fff;
-            padding: 30px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: auto;
         }
-        .login-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
         }
+
         .form-group input[type="text"],
-        .form-group input[type="password"] {
+        .form-group input[type="password"],
+        .form-group input[type="email"] {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box; /* Ensures padding is included in width */
         }
+
         .form-group button {
             background-color: #4CAF50;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
         }
+
         .form-group button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>User Login</h2>
-        <form action="/logined" method="POST">
+    <div class="container">
+        <h2>User Registration</h2>
+        <form action="/register" method="POST">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="form-group">
-                <button type="submit">Login</button>
+                <button type="submit">Register</button>
             </div>
         </form>
     </div>
