@@ -13,6 +13,7 @@
     <main>
         <div class="container">
             <h1><%- data %></h1>
+            <h3><%- sent ? "Message sent successfully. We will contact you soon!" : ""%></h3>
             <form action="/submitform" method="POST">
                 <br>
                 <br>
@@ -28,15 +29,15 @@
         </div>
     </main>
 
-    <%- include("../components/footer.ejs") %>
-
+    
     <script>
         // Optional: JavaScript for navigation toggle
         const navToggle = document.querySelector('.nav-toggle');
         navToggle.addEventListener('click', () => {
             document.body.classList.toggle('nav-open');
         });
-    </script>
+        </script>
     <%- include("../components/scriptbootstrap.ejs") %> 
 </body>
+<%- include("../components/footer.ejs") %>
 </html>

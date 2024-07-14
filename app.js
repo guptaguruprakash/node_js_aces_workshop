@@ -38,6 +38,13 @@ app.get("/", async (req, res) => {
     res.render("./blog/home", { blogs })
 })
 
+app.post("/", async(req,res)=>
+    {
+    const {search}=req.body
+    const data=await Blog.find({title : search})
+        res.render("./blog/home", {blogs : data})
+})
+
 app.get("/about", isAuthenticated, (req, res) => {
     const name = "Guru Prakash Gupta"
     res.render("./blog/about", { name })
@@ -45,9 +52,13 @@ app.get("/about", isAuthenticated, (req, res) => {
 
 app.get("/contact", isAuthenticated, (req, res) => {
     const data = "Please Feel free to contact us"
-    res.render("./blog/contact", { data })
+    res.render("./blog/contact", { data, sent: false})
 })
-
+app.get("/logout",(req,res)=>
+{
+    res.clearCookie("token");
+res.redirect("/login")
+})
 app.get("/createblog", isAuthenticated, (req, res) => {
     console.log(req.userId)
     res.render("./blog/createblog")
@@ -64,9 +75,9 @@ app.get('/blogs', async (req, res) => {
 app.post("/submitform", async (req, res) => {
     const { name, email, message } = req.body
     console.log(name, email, message)
-
+    const data = "Please do contact"
     await Form.create({ name, email, message })
-    res.send("Form submitted")
+    res.render("./blog/contact.ejs", {data, sent : true})    
 })
 
 app.post("/createblog", upload.single('image'), async (req, res) => {
@@ -147,7 +158,7 @@ app.post("/login", async (req, res) => {
                 expiresIn: '20d'
             })
             res.cookie("token", token)
-            res.send("logged in successfully")
+            res.redirect("/")
         }
     }
 })

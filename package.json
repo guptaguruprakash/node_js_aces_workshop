@@ -22,6 +22,7 @@
     "moustache": "^0.0.4",
     "multer": "^1.4.5-lts.1",
     "multipart": "^0.1.5",
+    "node": "^18.20.4",
     "nodemon": "^3.1.4"
   }
 }
