@@ -364,4 +364,7 @@ h1 {
       background-color: #45a049;
   }
     }
-
+    /* node_js_aces_workshop/public/css/home.css */
+.description-class {
+    white-space: pre-wrap;
+  }

@@ -1,9 +1,6 @@
-<!-- views/blog-form.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <title>Create a New Blog Post</title>
     <link rel="stylesheet" href="/css/home.css">
     <%- include("../components/linkbootstrap.ejs") %> 
@@ -12,22 +9,20 @@
     <%- include("../components/navbar.ejs") %>
 <br><br>
     <h1>Create a New Blog Post</h1>
-    <div class="container-fluid">
-    <form action="/createblog" method="POST" enctype="multipart/form-data" >
+    <div class="container">
+    <form action="/createblog" method="POST" enctype="multipart/form-data">
         <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" class="form-label" required><br><br>
+        <input type="text" id="title" name="title" class="form-control" aria-label="Title" required><br><br>
 
         <label for="subtitle">Subtitle:</label><br>
-        <input type="text" id="subtitle" name="subtitle"><br><br>
+        <input type="text" id="subtitle" name="subtitle" class="form-control" placeholder=".form-control-lg" aria-label="Subtitle"><br><br>
 
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+        <label for="description" class="form-label">Description:</label><br>
+        <textarea id="description" class="form-control" name="description" rows="4" cols="50" style="white-space: wrap;" required></textarea><br><br>
+        <label for="image">Image:</label><br>
+        <input type="file" id="image" name="image"><br><br>
 
-        <label for="image" >Image:</label><br>
-        <input type="file" id="image" name="image" ><br><br>
-   
-
-        <button type="submit" class="btn btn btn-warning btn-sm">Create Blog Post</button>
+        <button type="submit" class="btn btn-warning btn-sm">Create Blog Post</button>
     </form>
 </div><br><br><br><br>
     <%- include("../components/footer.ejs") %>

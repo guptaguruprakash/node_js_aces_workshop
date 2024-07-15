@@ -13,11 +13,11 @@
     <form action="/editdata/<%-data._id%>" method="POST" enctype="multipart/form-data">
       <div class="container-fluid">
         <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" class="form-label" value="<%-data.title%>" required><br><br>
+        <input type="text" id="title" name="title" class="form-control" value="<%-data.title%>" required><br><br>
         <label for="subtitle">Subtitle:</label><br>
-        <input type="text" id="subtitle" name="subtitle" value="<%-data.subtitle%>"><br><br>
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50" required><%-data.description%></textarea><br><br>
+        <input type="text" id="subtitle" class="form-control" name="subtitle" value="<%-data.subtitle%>"><br><br>
+        <label for="description"class="form-label">Description:</label><br>
+        <textarea id="description" class="form-control" rows="4" cols="50" style="white-space: wrap;"name="description" rows="4" cols="50" required><%-data.description%></textarea><br><br>
         <label for="image">Image:</label><br>
         <input type="file" id="image" name="image"><br><br>
         <button type="submit" class="btn btn-warning btn-sm">Update Blog Post</button>
