@@ -30,6 +30,10 @@ connectToDb()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use((req, res, next) => {
+    res.locals.token = req.cookies.token;
+    next();
+});
 
 app.set('view engine', 'ejs')
 
@@ -57,7 +61,7 @@ app.get("/contact", isAuthenticated, (req, res) => {
 app.get("/logout",(req,res)=>
 {
     res.clearCookie("token");
-res.redirect("/login")
+res.redirect("/")
 })
 app.get("/createblog", isAuthenticated, (req, res) => {
     console.log(req.userId)
@@ -95,13 +99,13 @@ app.get("/blog/:id", async (req, res) => {
     res.render("./blog/singleblog", { data })
 })
 
-app.get("/deletedata/:id", async (req, res) => {
+app.get("/deletedata/:id",isAuthenticated, async (req, res) => {
     const id = req.params.id
     await Blog.findByIdAndDelete(id)
     res.redirect("/")
 })
 
-app.get("/editdata/:id", async (req, res) => {
+app.get("/editdata/:id",isAuthenticated, async (req, res) => {
     const id = req.params.id
     const data = await Blog.findById(id)
     res.render("./blog/edit", { data })
