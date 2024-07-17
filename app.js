@@ -90,7 +90,7 @@ app.post("/createblog", upload.single('image'), async (req, res) => {
     console.log(title, subtitle, description)
 
     await Blog.create({ title, subtitle, description, image: fileName })
-    res.send("Blog created successfully")
+    res.redirect("/")
 })
 
 app.get("/blog/:id", async (req, res) => {
@@ -170,6 +170,6 @@ app.post("/login", async (req, res) => {
 app.use(express.static("./storage"))
 app.use(express.static("./public"))
 
-app.listen(3011, () => {
-    console.log("Nodejs project has started at port " + 3011)
+app.listen(3000, () => {
+    console.log("Nodejs project has started at port " + 3000)
 })
