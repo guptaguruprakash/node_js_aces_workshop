@@ -170,6 +170,6 @@ app.post("/login", async (req, res) => {
 app.use(express.static("./storage"))
 app.use(express.static("./public"))
 
-app.listen(3000, () => {
-    console.log("Nodejs project has started at port " + 3000)
+app.listen(3012, () => {
+    console.log("Nodejs project has started at port " + 3012)
 })
