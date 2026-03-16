@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 
 async function connectToDb(){
-await mongoose.connect("mongodb+srv://gurugupta22:guru1127@cluster0.0bkbuqf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"),
+await mongoose.connect("your_cluster_id"),
 console.log("database connected")
 }
 module.exports = connectToDb
